@@ -164,5 +164,8 @@
   ],
   "volta": {
     "node": "16.20.2"
+  },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
   }
 }
