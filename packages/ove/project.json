@@ -44,7 +44,7 @@
       "defaultConfiguration": "production",
       "options": {
         "emptyOutDir": false,
-        "generatePackageJson": true,
+        "generatePackageJson": false,
         "outputPath": "dist/ove"
       },
       "configurations": {
