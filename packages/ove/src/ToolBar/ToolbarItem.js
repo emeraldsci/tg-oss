@@ -123,6 +123,7 @@ class ToolbarItem extends React.Component {
         ) : null}
       </div>
     );
+
     const content = (
       <div
         ref={n => {
@@ -134,12 +135,14 @@ class ToolbarItem extends React.Component {
         {Dropdown && (
           <Dropdown
             {...rest}
+            disabled={false}
             editorName={editorName}
             toggleDropdown={this.toggleDropdown}
           />
         )}
       </div>
     );
+
     const target = IconWrapper ? (
       <IconWrapper {...IconWrapperProps}>
         {({ getRootProps, getInputProps }) => (

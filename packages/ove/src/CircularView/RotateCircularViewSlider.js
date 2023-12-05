@@ -1,6 +1,7 @@
 import React from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { SLIDER_NORM_WIDTH, SLIDER_SMALL_WIDTH } from "../constants/constants";
+import cut_sites_ECL from "../Toolbar/ECLImages/cut_sites_ECL.svg";
 
 import UncontrolledSliderWithPlusMinusBtns from "../helperComponents/UncontrolledSliderWithPlusMinusBtns";
 
@@ -62,7 +63,9 @@ export function RotateCircularViewSlider({
         smallSlider
         passedRef={target}
         showTrackFill={false}
-        leftIcon="arrow-left"
+        leftIcon={
+          <img src={cut_sites_ECL} alt="cut_sites_ECL" />
+        } /*"arrow-left"*/
         rightIcon="arrow-right"
         title="Rotate"
         style={{

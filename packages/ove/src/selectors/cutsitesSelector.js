@@ -26,7 +26,8 @@ function cutsitesSelector(sequence, circular, enzymeList, cutsiteLabelColors) {
       cutsite.annotationType = "cutsite";
       cutsitesById[uniqueId] = cutsite;
       const mergedCutsiteColors = Object.assign(
-        { single: "salmon", double: "lightblue", multi: "lightgrey" },
+        // { single: "salmon", double: "lightblue", multi: "lightgrey" },
+        { single: "purple", double: "lightblue", multi: "lightgrey" },
         cutsiteLabelColors
       );
       if (numberOfCuts === 1) {

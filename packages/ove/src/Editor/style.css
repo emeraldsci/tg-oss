@@ -188,6 +188,13 @@
   border-bottom-color: #48aff0 !important;
 }
 
+.ve-draggable-tabs .veTabActive {
+  color: red !important;
+  border-bottom-color: red !important;
+  font-size: 10 px;
+  font-family: "Times New Roman";
+}
+
 [cmd="filterPartsByTagCmd"] > .bp3-text-overflow-ellipsis {
   overflow: visible;
 }

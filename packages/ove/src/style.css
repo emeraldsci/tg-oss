@@ -74,8 +74,9 @@ body.tg-no-scroll-body {
   padding-top: 3px;
 }
 .veToolbar-outer {
-  padding-bottom: 1px;
-  background: #ebf1f5;
+  padding-bottom: 8px;
+  padding-top: 5px;
+  background: #d6dce2;
 }
 .bp3-dark .veToolbar-outer {
   background: #202b33;

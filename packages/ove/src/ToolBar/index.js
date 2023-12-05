@@ -24,6 +24,25 @@ import redoTool from "./redoTool";
 import isMobile from "is-mobile";
 import { useMemo } from "react";
 
+//Extra Tools
+import saveAsTool from "./saveAsTool";
+import hotKeys from "./hotKeys";
+import importCloudFile from "./importCloudFile";
+import dividerTool from "./dividerTool";
+
+//Pulled in Images
+import cut_sites_ECL from "./ECLImages/cut_sites_ECL.svg";
+import import_sequence_ECL from "./ECLImages/import_sequence_ECL.svg";
+import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
+
+//Parts import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
+//Primers import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
+import show_features_ECL from "./ECLImages/show_features_ECL.svg";
+import show_part_ECL from "./ECLImages/show_part_ECL.svg";
+import show_primer_ECL from "./ECLImages/show_primer_ECL.svg";
+import reading_frame_ECL from "./ECLImages/reading_frame_ECL.svg";
+import view_ECL from "./ECLImages/view_ECL.svg";
+
 const allTools = {
   downloadTool,
   importTool,
@@ -40,7 +59,13 @@ const allTools = {
   saveTool,
   visibilityTool,
   undoTool,
-  redoTool
+  redoTool,
+
+  //added tools
+  saveAsTool,
+  hotKeys,
+  importCloudFile,
+  dividerTool
 };
 
 export function ToolBar(props) {
@@ -126,6 +151,7 @@ export function ToolBar(props) {
             editorName,
             ...toolOverride
           }}
+          openHotkeyDialog={openHotkeyDialog}
           editorName={editorName}
           key={toolName}
         />
@@ -142,6 +168,7 @@ export function ToolBar(props) {
       {contentLeft}
       <div
         style={{
+          backgroundColor: "rgb(#d6dce2)",
           ...(displayMenuBarAboveTools && showMenuBar
             ? {
                 display: "flex",
@@ -152,7 +179,7 @@ export function ToolBar(props) {
             : {
                 display: "flex",
                 width: "100%",
-                justifyContent: "center",
+                justifyContent: "left",
                 flexWrap: "wrap"
               })
         }}
@@ -169,7 +196,7 @@ export function ToolBar(props) {
         )}
         {displayMenuBarAboveTools && showMenuBar ? (
           <div
-            className="veTools-displayMenuBarAboveTools"
+            className="veTools-displayMenuBarAboveTool"
             style={{
               display: "flex",
               paddingLeft: 15,
@@ -228,4 +255,70 @@ export const defaultToolList = [
   "editTool",
   "findTool",
   "visibilityTool"
+];
+
+export const eclToolList = [
+  "importCloudFile",
+
+  "dividerTool",
+
+  "saveTool",
+
+  "saveAsTool",
+
+  "dividerTool",
+
+  {
+    name: "importTool",
+    Icon: <img src={import_sequence_ECL} alt="import_sequence_ECL" />
+  },
+  {
+    name: "downloadTool",
+    Icon: <img src={export_sequence_ECL} alt="export_sequence_ECL" />
+  },
+
+  "dividerTool",
+
+  "undoTool",
+
+  "redoTool",
+
+  "dividerTool",
+
+  {
+    name: "cutsiteTool",
+    Icon: <img src={cut_sites_ECL} alt="cut_sites_ECL" />
+  },
+  {
+    name: "featureTool",
+    Icon: <img src={show_features_ECL} alt="show_features_ECL" />
+  },
+  {
+    name: "partTool",
+    Icon: <img src={show_part_ECL} alt="show_part_ECL" />
+  },
+  {
+    name: "oligoTool",
+    Icon: <img src={show_primer_ECL} alt="show_primer_ECL" />
+  },
+  {
+    name: "orfTool",
+    Icon: <img src={reading_frame_ECL} alt="reading_frame_ECL" />
+  },
+
+  "dividerTool",
+
+  {
+    name: "visibilityTool",
+    Icon: <img src={view_ECL} alt="view_ECL" />
+  },
+  "hotKeys",
+
+  "dividerTool",
+
+  //{
+  //  name: "findTool",
+  //  Icon: <img src={search_tools_ECL} alt="search_tools_ECL" />
+  //}
+  "findTool"
 ];

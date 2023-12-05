@@ -543,6 +543,7 @@ export default function RowItem(props) {
             const bufferBottom = 4;
             const bufferLeft = 2;
             const arrowHeight = isStart ? 8 : 0;
+
             return (
               <Sequence
                 sequenceLength={sequenceLength}

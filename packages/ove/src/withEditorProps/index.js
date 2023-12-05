@@ -924,6 +924,7 @@ const getSequenceDataToUse = createSelector(
   s.filteredPrimersSelector,
   s.filteredPartsSelector,
   s.orfsSelector,
+
   (
     uppercaseSequenceMapFont,
     sequenceData,

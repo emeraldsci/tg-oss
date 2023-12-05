@@ -250,7 +250,7 @@ const proteinAlphabet = {
   Z: {
     value: "Z",
     threeLettersName: "QE",
-    colorByFamily: "#D3D3D3",
+    colorByFamily: "#3DD3D3",
     color: "hsl(268.9, 100%, 69%)",
     isAmbiguous: true,
     name: "Z",

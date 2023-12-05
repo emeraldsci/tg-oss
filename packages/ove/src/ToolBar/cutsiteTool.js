@@ -19,6 +19,7 @@ export default connectToEditor(
     <ToolbarItem
       {...{
         Icon: <Icon data-test="cutsiteHideShowTool" icon="cut" />,
+        // Icon: <img src="/Users/derekmachalek/Downloads/cutECL.png" alt="Your Icon" data-test="cutsiteHideShowTool">,
         onIconClick: function () {
           annotationVisibilityToggle("cutsites");
         },

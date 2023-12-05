@@ -21,5 +21,6 @@ export default createReducer(
       return payload;
     }
   },
-  newVal || "noPreference" //  noPreference || uppercase || lowercase
+  //newVal || "noPreference" //  noPreference || uppercase || lowercase
+  newVal || "uppercase" //  noPreference || uppercase || lowercase
 );

@@ -48,6 +48,15 @@
   fill: #f5f8fa !important;
 }
 
+.veCircularViewAxisNumber {
+  fill: red;
+  font-family: "Times New Roman";
+}
+
+.veCircularViewInternalLabelText {
+  fill: green;
+}
+
 .bp3-dark .menu-bar {
   background: none !important;
 }
