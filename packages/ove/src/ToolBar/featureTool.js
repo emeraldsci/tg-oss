@@ -1,11 +1,6 @@
-import { Icon } from "@blueprintjs/core";
-// import { Checkbox, Button } from "@blueprintjs/core";
-import React from "react";
-// import { connect } from "react-redux";
-// import { convertRangeTo1Based } from "@teselagen/range-utils";
-import { featureIcon } from "@teselagen/ui";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
+import show_features_ECL from "./ECLImages/show_features_ECL.svg";
 
 export default connectToEditor(
   ({ annotationVisibility = {}, toolBar = {} }) => {
@@ -18,7 +13,7 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon icon={featureIcon} />,
+        Icon: <img src={show_features_ECL} alt="show_features_ECL" />,
         onIconClick: function () {
           annotationVisibilityToggle("features");
         },

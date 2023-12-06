@@ -1,12 +1,7 @@
-import { Icon } from "@blueprintjs/core";
-// import { Checkbox, Button } from "@blueprintjs/core";
-import React from "react";
-// import { connect } from "react-redux";
-// import { convertRangeTo1Based } from "@teselagen/range-utils";
-//import { partIcon } from "@teselagen/ui";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import { PartTagSearch } from "../helperComponents/partTagSearch";
+import show_part_ECL from "./ECLImages/show_part_ECL.svg";
 
 export default connectToEditor(
   ({ annotationVisibility = {}, toolBar = {} }) => {
@@ -26,7 +21,7 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon icon="doughnut-chart" />,
+        Icon: <img src={show_part_ECL} alt="show_part_ECL" />,
         onIconClick: function () {
           annotationVisibilityToggle("parts");
         },

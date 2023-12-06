@@ -1,48 +1,12 @@
-import React from "react";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-//import open_cloud_file_ECL from "./ECLImages/open_cloud_file_ECL.svg";
+import open_cloud_file_ECL from "./ECLImages/open_cloud_file_ECL.svg";
 
 export default connectToEditor()(({ toolbarItemProps }) => {
   return (
     <ToolbarItem
       {...{
-        //Icon: <img src={open_cloud_file_ECL} alt="open_cloud_file_ECL" />,
-        Icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="24px"
-            height="24px"
-            viewBox="0 0 24 24"
-            version="1.1"
-          >
-            <g
-              id="Page-1"
-              stroke="none"
-              stroke-width="1"
-              fill="none"
-              fill-rule="evenodd"
-            >
-              <g
-                id="1"
-                transform="translate(-315, -424)"
-                fill="#31353B"
-                fill-rule="nonzero"
-              >
-                <g
-                  id="TaskIcon/ic_Group-Copy"
-                  transform="translate(318.3333, 428.6667)"
-                >
-                  <path
-                    d="M1.92222013,14.6666667 C1.86077758,14.6666667 1.80062928,14.6611253 1.74224771,14.6505152 C0.822053425,14.5316802 0.0979174689,13.7881821 0.00915543741,12.85928 L0,12.6666667 L0,2.18398783 L1.50133333,2.18266667 L1.5564897,1.74830727 C1.67532665,0.811512841 2.42989875,0.0946097799 3.35370887,0.00865625045 L3.54058918,-1.77635684e-15 L5.73124046,-1.77635684e-15 C6.36199435,-1.77635684e-15 6.95133199,0.297142292 7.32679008,0.7940493 L7.44378473,0.966950086 L8.17733333,2.18266667 L14.6666667,2.18398783 L14.666,5.333 L18,5.33333333 L16.0357611,13.8903941 C15.9314839,14.34467 15.5271998,14.6666667 15.0611094,14.6666667 L1.92222013,14.6666667 Z M5.73124046,1.33333333 L3.54058918,1.33333333 C3.24214316,1.33333333 2.98509186,1.53061659 2.90197814,1.80839178 L2.87922269,1.91610242 L2.67610026,3.51732116 L1.33333333,3.516 L1.333,11.761 L2.80909581,5.33333333 L13.333,5.333 L13.3333333,3.516 L7.42509556,3.51732116 L6.30208855,1.65565003 C6.20153296,1.48895343 6.03437868,1.37625346 5.84626134,1.34331726 L5.73124046,1.33333333 Z"
-                    id="Combined-Shape"
-                  />
-                </g>
-              </g>
-            </g>
-          </svg>
-        ),
+        Icon: <img src={open_cloud_file_ECL} alt="open_cloud_file_ECL" />,
         onIconClick: () => {
           window.toastr.success("Import Cloud File");
         },

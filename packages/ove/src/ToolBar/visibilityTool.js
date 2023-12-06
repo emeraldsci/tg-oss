@@ -1,4 +1,4 @@
-import { Icon, Menu } from "@blueprintjs/core";
+import { Menu } from "@blueprintjs/core";
 import React from "react";
 import { createCommandMenu } from "@teselagen/ui";
 import viewSubmenu from "../MenuBar/viewSubmenu";
@@ -6,6 +6,7 @@ import getCommands from "../commands";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import withEditorProps from "../withEditorProps";
+import view_ECL from "./ECLImages/view_ECL.svg";
 
 export default connectToEditor(({ toolBar = {} }) => {
   return {
@@ -15,7 +16,7 @@ export default connectToEditor(({ toolBar = {} }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon icon="eye-open" />,
+        Icon: <img src={view_ECL} alt="view_ECL" />,
         onIconClick: "toggleDropdown",
         Dropdown: VisibilityOptions,
         noDropdownIcon: true,

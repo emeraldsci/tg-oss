@@ -1,10 +1,10 @@
-import { Icon } from "@blueprintjs/core";
 import React from "react";
-import { orfIcon, CmdCheckbox, CmdDiv, InfoHelper } from "@teselagen/ui";
+import { CmdCheckbox, CmdDiv, InfoHelper } from "@teselagen/ui";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import withEditorProps from "../withEditorProps";
 import getCommands from "../commands";
+import reading_frame_ECL from "./ECLImages/reading_frame_ECL.svg";
 
 export default connectToEditor(
   ({ annotationVisibility = {}, toolBar = {} }) => {
@@ -17,7 +17,7 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon data-test="orfTool" icon={orfIcon} />,
+        Icon: <img src={reading_frame_ECL} alt="reading_frame_ECL" />,
         onIconClick: function () {
           annotationVisibilityToggle("orfs");
         },

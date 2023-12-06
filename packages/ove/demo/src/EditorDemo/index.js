@@ -31,8 +31,6 @@ import _chromData from "../../../scratch/ab1ParsedGFPvv50.json";
 import { convertBasePosTraceToPerBpTrace } from "@teselagen/bio-parsers";
 import { eclToolList } from "../../../src/ToolBar";
 
-import cutECL from "./Images/cutECL.svg";
-
 // import AddOrEditPrimerDialog from "../../../src/helperComponents/AddOrEditPrimerDialog";
 // import _chromData from "../../../scratch/B_reverse.json";
 // import example1Ab1 from "../../../scratch/example1.ab1.json";
@@ -2063,7 +2061,7 @@ clickOverrides: {
                 return {
                   name: "alignmentTool",
                   Dropdown: SimpleAlignDropdown,
-                  Icon: <img src={cutECL} alt="scissors" /> //<Icon data-test="alignmentTool" icon="align-right" />
+                  Icon: <Icon data-test="alignmentTool" icon="align-right" />
                 };
               })
             }}

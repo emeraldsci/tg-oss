@@ -1,5 +1,3 @@
-import React from "react";
-
 //create a new vertical line component that divides the toolbar
 const VerticalLine = ({ height, color, thickness }) => {
   const lineStyle = {

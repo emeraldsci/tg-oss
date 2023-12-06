@@ -26,22 +26,9 @@ import { useMemo } from "react";
 
 //Extra Tools
 import saveAsTool from "./saveAsTool";
-import hotKeys from "./hotKeys";
+import hotKeys from "./hotKeysTool";
 import importCloudFile from "./importCloudFile";
 import dividerTool from "./dividerTool";
-
-//Pulled in Images
-import cut_sites_ECL from "./ECLImages/cut_sites_ECL.svg";
-import import_sequence_ECL from "./ECLImages/import_sequence_ECL.svg";
-import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
-
-//Parts import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
-//Primers import export_sequence_ECL from "./ECLImages/export_sequence_ECL.svg";
-import show_features_ECL from "./ECLImages/show_features_ECL.svg";
-import show_part_ECL from "./ECLImages/show_part_ECL.svg";
-import show_primer_ECL from "./ECLImages/show_primer_ECL.svg";
-import reading_frame_ECL from "./ECLImages/reading_frame_ECL.svg";
-import view_ECL from "./ECLImages/view_ECL.svg";
 
 const allTools = {
   downloadTool,
@@ -268,14 +255,9 @@ export const eclToolList = [
 
   "dividerTool",
 
-  {
-    name: "importTool",
-    Icon: <img src={import_sequence_ECL} alt="import_sequence_ECL" />
-  },
-  {
-    name: "downloadTool",
-    Icon: <img src={export_sequence_ECL} alt="export_sequence_ECL" />
-  },
+  "importTool",
+
+  "downloadTool",
 
   "dividerTool",
 
@@ -285,40 +267,23 @@ export const eclToolList = [
 
   "dividerTool",
 
-  {
-    name: "cutsiteTool",
-    Icon: <img src={cut_sites_ECL} alt="cut_sites_ECL" />
-  },
-  {
-    name: "featureTool",
-    Icon: <img src={show_features_ECL} alt="show_features_ECL" />
-  },
-  {
-    name: "partTool",
-    Icon: <img src={show_part_ECL} alt="show_part_ECL" />
-  },
-  {
-    name: "oligoTool",
-    Icon: <img src={show_primer_ECL} alt="show_primer_ECL" />
-  },
-  {
-    name: "orfTool",
-    Icon: <img src={reading_frame_ECL} alt="reading_frame_ECL" />
-  },
+  "cutsiteTool",
+
+  "featureTool",
+
+  "partTool",
+
+  "oligoTool",
+
+  "orfTool",
 
   "dividerTool",
 
-  {
-    name: "visibilityTool",
-    Icon: <img src={view_ECL} alt="view_ECL" />
-  },
+  "visibilityTool",
+
   "hotKeys",
 
   "dividerTool",
 
-  //{
-  //  name: "findTool",
-  //  Icon: <img src={search_tools_ECL} alt="search_tools_ECL" />
-  //}
   "findTool"
 ];

@@ -1,6 +1,4 @@
-import React from "react";
 import ToolbarItem from "./ToolbarItem";
-//import { connectToEditor, handleSave } from "../withEditorProps";
 import { compose } from "redux";
 import save_as_ECL from "./ECLImages/save_as_ECL.svg";
 
