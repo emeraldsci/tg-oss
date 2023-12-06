@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions*/
 import assert from "assert";
-import genbankToJson from "../src/genbankToJson";
+import genbankToJson, { parseFeatureLocation } from "../src/genbankToJson";
 
 import path from "path";
 import fs from "fs";
@@ -865,7 +865,7 @@ ORIGIN
     });
   });
 
-  it("will convert U base pairs to T for DNA", () => {
+  it("will not convert U base pairs to T for DNA", () => {
     const string = fs.readFileSync(
       path.join(__dirname, "./testData/genbank/genbankWithU.gb"),
       "utf8"
@@ -875,8 +875,8 @@ ORIGIN
     res.should.be.an("array");
     res[0].success.should.be.true;
     res[0].parsedSequence.features.length.should.equal(1);
+    expect(res[0].parsedSequence.sequence).toContain("u");
     expect(res[0].parsedSequence.sequence).toContain("t");
-    expect(res[0].parsedSequence.sequence).not.toContain("u");
   });
   it("will NOT convert U base pairs to T for RNA", () => {
     const string = fs.readFileSync(
@@ -1022,6 +1022,40 @@ ORIGIN
     expect(result[0].success).toBe(true);
 
     expect(result[0].parsedSequence.size).toBe(6758);
+  });
+
+  it("parseFeatureLocation returns expected outputs", () => {
+    const testCases = [
+      { input: "1..2", output: [{ start: 0, end: 1 }] },
+      { input: "complement(1..2)", output: [{ start: 0, end: 1 }] },
+      {
+        input: "join(1..2,3..4)",
+        output: [
+          { start: 0, end: 1 },
+          { start: 2, end: 3 }
+        ]
+      },
+      {
+        input: "complement(join(1..2,3..4))",
+        output: [
+          { start: 0, end: 1 },
+          { start: 2, end: 3 }
+        ]
+      },
+      // Origin-spanning features
+      {
+        input: "complement(join(3..4,1..2))",
+        output: [{ start: 2, end: 1 }]
+      },
+      {
+        input: "join(3..4,1..2)",
+        output: [{ start: 2, end: 1 }]
+      }
+    ];
+    testCases.forEach(({ input, output }) => {
+      const result = parseFeatureLocation(input, 0, 0, 0, 1, 4);
+      expect(result).toEqual(output);
+    });
   });
 });
 

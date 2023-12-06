@@ -58,3 +58,5 @@ downloads
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.nx

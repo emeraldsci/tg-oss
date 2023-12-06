@@ -1,11 +1,29 @@
+import { debounce, uniq } from "lodash";
 import {
   ambiguous_dna_letters,
   ambiguous_rna_letters,
   extended_protein_letters
 } from "./bioData";
 
+let allWarnings = [];
+
+let makeToast = () => {
+  if (typeof window !== "undefined" && window.toastr && allWarnings.length) {
+    window.toastr.warning(allWarnings.join("\n"));
+  }
+  allWarnings = [];
+};
+
+makeToast = debounce(makeToast, 200);
+
+function showWarnings(warnings) {
+  allWarnings = allWarnings.concat(warnings);
+  makeToast.cancel();
+  makeToast();
+}
+
 export default function filterSequenceString(
-  sequenceString,
+  sequenceString = "",
   {
     additionalValidChars = "",
     isOligo,
@@ -62,16 +80,12 @@ export default function filterSequenceString(
     warnings.push(
       `${
         name ? `Sequence ${name}: ` : ""
-      }Invalid character(s) detected and removed: ${invalidChars
+      }Invalid character(s) detected and removed: ${uniq(invalidChars)
         .slice(0, 100)
         .join(", ")} `
     );
   }
-  if (typeof window !== "undefined" && window.toastr && warnings.length) {
-    warnings.forEach(warning => {
-      window.toastr.warning(warning);
-    });
-  }
+  showWarnings(warnings);
 
   return [sanitizedVal, warnings];
 }
@@ -111,3 +125,6 @@ export function getReplaceChars({
     : //just plain old dna
       {};
 }
+
+export const filterRnaString = (s, o) =>
+  filterSequenceString(s, { ...o, isRna: true })[0];

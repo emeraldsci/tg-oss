@@ -18,11 +18,14 @@ export default function insertSequenceDataAtPositionOrRange(
   //when inserting new seq, n bps of the new seq should go in before the origin and the rest should be
   //inserted at the sequence start
   const { maintainOriginSplit } = options;
-  let existingSequenceData = tidyUpSequenceData(_existingSequenceData, options);
-  const sequenceDataToInsert = tidyUpSequenceData(
-    _sequenceDataToInsert,
-    options
-  );
+  let existingSequenceData = tidyUpSequenceData(_existingSequenceData, {
+    doNotRemoveInvalidChars: true,
+    ...options
+  });
+  const sequenceDataToInsert = tidyUpSequenceData(_sequenceDataToInsert, {
+    topLevelSeqData: existingSequenceData,
+    ...options
+  });
   const newSequenceData = cloneDeep(existingSequenceData);
   const insertLength = sequenceDataToInsert.proteinSequence
     ? sequenceDataToInsert.proteinSequence.length * 3
@@ -48,6 +51,7 @@ export default function insertSequenceDataAtPositionOrRange(
           return (acc[type] = []);
         }, {}),
         sequence: "",
+        doNotRemoveInvalidChars: true,
         proteinSequence: "",
         chromatogramData: undefined
       },

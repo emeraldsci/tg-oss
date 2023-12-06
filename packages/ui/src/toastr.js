@@ -1,4 +1,5 @@
 import { Position, Toaster, Intent } from "@blueprintjs/core";
+import classNames from "classnames";
 
 const TopToaster = Toaster.create({
   className: "top-toaster",
@@ -28,17 +29,20 @@ const generateToast = intent => (message, options) => {
       updatedTimeout = ++counter;
     }
   }
-  if (window.Cypress && intent === Intent.DANGER) {
-    console.error("toastr error message: ", message);
+  if (intent === Intent.DANGER) {
+    console.error("Toastr error message: ", message);
   }
   const uniqKey = toastToUse.show(
     {
       intent,
       message,
-      timeout: options.timeout || updatedTimeout,
+      timeout:
+        options.timeout || updatedTimeout || intent === Intent.DANGER
+          ? 60000
+          : undefined,
       action: options.action,
       icon: options.icon,
-      className: options.className
+      className: classNames("preserve-newline", options.className)
     },
     options.key
   );
