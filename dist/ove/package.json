@@ -1,6 +1,6 @@
 {
   "name": "@teselagen/ove",
-  "version": "0.3.49",
+  "version": "0.3.63",
   "main": "./src/index.js",
   "exports": {
     ".": {
@@ -17,13 +17,11 @@
     "@blueprintjs/datetime": "3.23.19",
     "@blueprintjs/icons": "3.33.0",
     "@blueprintjs/select": "3.18.11",
-    "@fontsource/ubuntu-mono": "^4.5.11",
     "@hello-pangea/dnd": "16.2.0",
     "@risingstack/react-easy-state": "^6.3.0",
     "@teselagen/react-list": "0.8.18",
-    "@teselagen/react-table": "6.10.13",
+    "@teselagen/react-table": "6.10.16",
     "@use-gesture/react": "^10.2.23",
-    "axios": "^0.21.1",
     "bluebird": "3.7.2",
     "bson-objectid": "2.0.4",
     "buffer": "6.0.3",
@@ -38,8 +36,8 @@
     "dom-to-image": "^2.6.0",
     "downloadjs": "^1.4.7",
     "escape-string-regexp": "5.0.0",
-    "fast-xml-parser": "4.3.2",
-    "fflate": "0.8.1",
+    "fast-xml-parser": "4.2.7",
+    "fflate": "0.8.0",
     "file-saver": "^2.0.5",
     "fuse.js": "^6.6.2",
     "fuzzysearch": "^1.0.3",
