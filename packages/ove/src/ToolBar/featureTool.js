@@ -1,6 +1,7 @@
+import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-import show_features_ECL from "./ECLImages/show_features_ECL.svg";
+import show_features_ECL_31353B from "../images/ECLImages/show_features_ECL_31353B.svg";
 
 export default connectToEditor(
   ({ annotationVisibility = {}, toolBar = {} }) => {
@@ -13,7 +14,16 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={show_features_ECL} alt="show_features_ECL" />,
+        Icon: (
+          <Icon
+            icon={
+              <img
+                src={show_features_ECL_31353B}
+                alt="show_features_ECL_31353B"
+              />
+            }
+          />
+        ),
         onIconClick: function () {
           annotationVisibilityToggle("features");
         },

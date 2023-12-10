@@ -1,12 +1,22 @@
 import ToolbarItem from "./ToolbarItem";
 import { compose } from "redux";
-import hotkeys_editor_ECL from "./ECLImages/hotkeys_editor_ECL.svg";
+import { Icon } from "@blueprintjs/core";
+import hotkeys_editor_ECL_31353B from "../images/ECLImages/hotkeys_editor_ECL_31353B.svg";
 
 export default compose()(({ toolbarItemProps, openHotkeyDialog }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={hotkeys_editor_ECL} alt="hotkeys_editor_ECL" />,
+        Icon: (
+          <Icon
+            icon={
+              <img
+                src={hotkeys_editor_ECL_31353B}
+                alt="hotkeys_editor_ECL_31353B"
+              />
+            }
+          />
+        ),
         onIconClick: () => {
           openHotkeyDialog();
         },

@@ -1441,7 +1441,7 @@ export class AlignmentView extends React.Component {
                     paddingBottom: "5px",
                     borderBottom: "1px solid",
                     display: "flex",
-                    minHeight: "30px",
+                    minHeight: "32px",
                     width: "100%",
                     flexWrap: "nowrap",
                     flexDirection: "row",

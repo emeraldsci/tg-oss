@@ -18,8 +18,8 @@ import { getSingular } from "../utils/annotationTypes";
 import { getFeatureToColorMap } from "@teselagen/sequence-utils";
 import { getReverseComplementSequenceString } from "@teselagen/sequence-utils";
 import isMobile from "is-mobile";
-import search_tools_ECL from "../Toolbar/ECLImages/search_tools_ECL.svg";
-import search_ECL from "../Toolbar/ECLImages/search_ECL.svg";
+import search_tools_ECL_31353B from "../images/ECLImages/search_tools_ECL_31353B.svg";
+import search_ECL_31353B from "../images/ECLImages/search_ECL_31353B.svg";
 
 const opts = [
   { label: "DNA", value: "DNA" },
@@ -179,7 +179,12 @@ export class FindBar extends React.Component {
               <Button
                 data-test="veFindBarOptionsToggle"
                 minimal
-                icon={<img src={search_tools_ECL} alt="search_tools_ECL" />}
+                icon={
+                  <img
+                    src={search_tools_ECL_31353B}
+                    alt="search_tools_ECL_31353B"
+                  />
+                }
               />
             }
             content={
@@ -297,12 +302,13 @@ export class FindBar extends React.Component {
                 return updateSearchText(e.target.value.replace(/\s/g, ""));
               }}
               value={searchText}
-              //leftIcon = "search"
-              //leftIcon = "error"
               leftIcon={
-                <img className="bp3-icon" src={search_ECL} alt="search_ECL" />
+                <img
+                  className="bp3-icon"
+                  src={search_ECL_31353B}
+                  alt="search_ECL_31353B"
+                />
               }
-              //leftIcon= {<img src={search_ECL} />}
             />
           }
           position="bottom"

@@ -3,7 +3,7 @@ import { Icon } from "@blueprintjs/core";
 import FindBar from "../FindBar";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-import search_ECL from "./ECLImages/search_ECL.svg";
+import search_ECL_31353B from "../images/ECLImages/search_ECL_31353B.svg";
 
 export default connectToEditor(({ findTool = {} }) => {
   return {
@@ -17,10 +17,14 @@ export default connectToEditor(({ findTool = {} }) => {
           <div>
             <Icon
               data-test="ve-find-tool-toggle"
-              icon={<img class="bp3-icon" src={search_ECL} alt="search_ECL" />}
+              icon={
+                <img
+                  class="bp3-icon"
+                  src={search_ECL_31353B}
+                  alt="search_ECL_31353B"
+                />
+              }
             />
-            {/*<Icon data-test="ve-find-tool-toggle" icon="search" />
-            <Icon icon="caret-right" />*/}
           </div>
         ) : (
           <FindBar editorName={editorName} />
@@ -28,11 +32,11 @@ export default connectToEditor(({ findTool = {} }) => {
         renderIconAbove: isOpen,
         onIconClick: toggleFindTool,
         tooltip: isOpen ? (
-          <span style={{ display: "flex", alignItems: "bottom" }}>
+          <span>
             Hide Find Tool <span style={{ fontSize: 10 }}>(Cmd/Ctrl+F)</span>
           </span>
         ) : (
-          <span style={{ display: "flex", alignItems: "bottom" }}>
+          <span>
             Show Find Tool <span style={{ fontSize: 10 }}>(Cmd/Ctrl+F)</span>
           </span>
         ),

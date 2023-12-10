@@ -22,8 +22,7 @@ export default function CircularPrimer(props) {
     tailThickness: 1, //feature specific
     returnTextPath: true,
     hasLabel: ellipsizedName,
-    labelNeedsFlip,
-    arrowheadType: "None"
+    labelNeedsFlip
   });
   return (
     <React.Fragment>
@@ -33,8 +32,7 @@ export default function CircularPrimer(props) {
         id={id}
         strokeWidth=".5"
         stroke="black"
-        // fill="url(#diagonalHatch)"
-        fill="red"
+        fill="url(#diagonalHatch)"
         d={path.print()}
       />
       {getInternalLabel({ ...props, colorToUse: color, textPath })}

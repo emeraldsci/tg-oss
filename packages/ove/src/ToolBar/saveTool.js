@@ -4,8 +4,7 @@ import ToolbarItem from "./ToolbarItem";
 import { connectToEditor, handleSave } from "../withEditorProps";
 import { withHandlers } from "recompose";
 import { compose } from "redux";
-import save_ECL_black from "./ECLImages/save_ECL_black.svg";
-import save_ECL_gray from "./ECLImages/save_ECL_gray.svg";
+import save_ECL_31353B from "../images/ECLImages/save_ECL_31353B.svg";
 
 export default compose(
   connectToEditor(
@@ -32,9 +31,9 @@ export default compose(
     ? false
     : !onSave || hasBeenSaved || readOnly;
   const ourIcon = disabledIcon ? (
-    <img src={save_ECL_gray} alt="save_ECL_gray" />
+    <img src={save_ECL_31353B} alt="save_ECL_31353B" class="toolbar-disabled" />
   ) : (
-    <img src={save_ECL_black} alt="save_ECL_black" />
+    <img src={save_ECL_31353B} alt="save_ECL_31353B" />
   );
 
   return (

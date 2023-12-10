@@ -44,7 +44,7 @@
   color: #006cab;
 }
 .veToolbarItemOuter.disabled .veToolbarIcon {
-  color: rgb(202, 202, 202);
+  color: #cacaca;
 }
 .veToolbar .veToolbarItemOuter .veToolbarIcon.veToolbarItemToggled {
   background: lightgrey;
@@ -84,23 +84,8 @@
   margin: 0px;
 }
 
-.veToolbar .veToolbarItemOuter .bp3-pwrapperopover- {
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-}
-
-.bp3-pwrapperopover- {
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-}
-
-:not(.disabled).veToolbarItemOuter
-  .bp3-button.bp3-active.bp3-minimal.bp3-intent-primary:hover,
-:not(.disabled).veToolbarItemOuter
-  .bp3-button.bp3-minimal.bp3-intent-primary:hover {
-  background: #bdc8d2;
+.bp3-popover-wrapper .toolbar-disabled {
+  opacity: 0.5;
 }
 
 .veToolbarItemOuter .bp3-button.bp3-active.bp3-minimal.bp3-intent-primary {
@@ -185,10 +170,14 @@
   margin: 0px;
 }
 
-.bp3-input-group .bp3-input-action,
-.bp3-input-group > .bp3-input-left-container,
-.bp3-input-group > .bp3-button,
-.bp3-input-group > .bp3-icon {
+.veToolbarItemOuter.ve-tool-container-findTool
+  .bp3-input-group
+  .bp3-input-action,
+.veToolbarItemOuter.ve-tool-container-findTool
+  .bp3-input-group
+  > .bp3-input-left-container,
+.veToolbarItemOuter.ve-tool-container-findTool .bp3-input-group > .bp3-button,
+.veToolbarItemOuter.ve-tool-container-findTool .bp3-input-group > .bp3-icon {
   position: absolute;
   top: 3px;
 }

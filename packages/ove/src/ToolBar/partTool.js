@@ -1,7 +1,8 @@
+import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import { PartTagSearch } from "../helperComponents/partTagSearch";
-import show_part_ECL from "./ECLImages/show_part_ECL.svg";
+import show_part_ECL_31353B from "../images/ECLImages/show_part_ECL_31353B.svg";
 
 export default connectToEditor(
   ({ annotationVisibility = {}, toolBar = {} }) => {
@@ -21,7 +22,11 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={show_part_ECL} alt="show_part_ECL" />,
+        Icon: (
+          <Icon
+            icon={<img src={show_part_ECL_31353B} alt="show_part_ECL_31353B" />}
+          />
+        ),
         onIconClick: function () {
           annotationVisibilityToggle("parts");
         },

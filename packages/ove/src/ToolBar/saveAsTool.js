@@ -1,12 +1,17 @@
+import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
 import { compose } from "redux";
-import save_as_ECL from "./ECLImages/save_as_ECL.svg";
+import save_as_ECL_31353B from "../images/ECLImages/save_as_ECL_31353B.svg";
 
 export default compose()(({ toolbarItemProps }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={save_as_ECL} alt="save_as_ECL" />,
+        Icon: (
+          <Icon
+            icon={<img src={save_as_ECL_31353B} alt="save_as_ECL_31353B" />}
+          />
+        ),
         onIconClick: () => {
           window.toastr.success("Save As");
         },

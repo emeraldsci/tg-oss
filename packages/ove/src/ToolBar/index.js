@@ -26,9 +26,9 @@ import { useMemo } from "react";
 
 //Extra Tools
 import saveAsTool from "./saveAsTool";
-import hotKeys from "./hotKeysTool";
-import importCloudFile from "./importCloudFile";
-import dividerTool from "./dividerTool";
+import hotKeysTool from "./hotKeysTool";
+import importCloudFile from "./importPlasmidTool";
+import dividerTool from "./dividerComponent";
 
 const allTools = {
   downloadTool,
@@ -50,7 +50,7 @@ const allTools = {
 
   //added tools
   saveAsTool,
-  hotKeys,
+  hotKeysTool,
   importCloudFile,
   dividerTool
 };
@@ -155,7 +155,7 @@ export function ToolBar(props) {
       {contentLeft}
       <div
         style={{
-          backgroundColor: "rgb(#d6dce2)",
+          backgroundColor: "#d6dce2",
           ...(displayMenuBarAboveTools && showMenuBar
             ? {
                 display: "flex",
@@ -183,7 +183,7 @@ export function ToolBar(props) {
         )}
         {displayMenuBarAboveTools && showMenuBar ? (
           <div
-            className="veTools-displayMenuBarAboveTool"
+            className="veTools-displayMenuBarAboveTools"
             style={{
               display: "flex",
               paddingLeft: 15,
@@ -242,48 +242,4 @@ export const defaultToolList = [
   "editTool",
   "findTool",
   "visibilityTool"
-];
-
-export const eclToolList = [
-  "importCloudFile",
-
-  "dividerTool",
-
-  "saveTool",
-
-  "saveAsTool",
-
-  "dividerTool",
-
-  "importTool",
-
-  "downloadTool",
-
-  "dividerTool",
-
-  "undoTool",
-
-  "redoTool",
-
-  "dividerTool",
-
-  "cutsiteTool",
-
-  "featureTool",
-
-  "partTool",
-
-  "oligoTool",
-
-  "orfTool",
-
-  "dividerTool",
-
-  "visibilityTool",
-
-  "hotKeys",
-
-  "dividerTool",
-
-  "findTool"
 ];

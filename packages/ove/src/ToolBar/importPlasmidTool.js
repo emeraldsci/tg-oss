@@ -1,12 +1,22 @@
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-import open_cloud_file_ECL from "./ECLImages/open_cloud_file_ECL.svg";
+import { Icon } from "@blueprintjs/core";
+import open_cloud_file_ECL_31353B from "../images/ECLImages/open_cloud_file_ECL_31353B.svg";
 
 export default connectToEditor()(({ toolbarItemProps }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={open_cloud_file_ECL} alt="open_cloud_file_ECL" />,
+        Icon: (
+          <Icon
+            icon={
+              <img
+                src={open_cloud_file_ECL_31353B}
+                alt="open_cloud_file_ECL_31353B"
+              />
+            }
+          />
+        ),
         onIconClick: () => {
           window.toastr.success("Import Cloud File");
         },

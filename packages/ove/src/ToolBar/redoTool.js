@@ -2,8 +2,7 @@ import React from "react";
 import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-import redo_ECL_black from "./ECLImages/redo_ECL_black.svg";
-import redo_ECL_gray from "./ECLImages/redo_ECL_gray.svg";
+import redo_ECL_31353B from "../images/ECLImages/redo_ECL_31353B.svg";
 
 export default connectToEditor(editorState => {
   return {
@@ -15,13 +14,13 @@ export default connectToEditor(editorState => {
   };
 })(({ toolbarItemProps, redo, disabled }) => {
   //adjust color based on disabled state
-  //this is a hacky solution that does not use the disabled state in blueprint
+  //this is a solution that does not use the disabled state in blueprint
   //for custom icons blueprint does not change on the disabled states
 
   const ourIcon = disabled ? (
-    <img src={redo_ECL_gray} alt="redo_ECL_gray" />
+    <img src={redo_ECL_31353B} alt="redo_ECL_31353B" class="toolbar-disabled" />
   ) : (
-    <img src={redo_ECL_black} alt="redo_ECL_black" />
+    <img src={redo_ECL_31353B} alt="redo_ECL_31353B" />
   );
 
   return (

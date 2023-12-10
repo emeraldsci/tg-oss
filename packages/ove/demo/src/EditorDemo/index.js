@@ -29,7 +29,6 @@ import pluralize from "pluralize";
 import { useEffect, useState } from "react";
 import _chromData from "../../../scratch/ab1ParsedGFPvv50.json";
 import { convertBasePosTraceToPerBpTrace } from "@teselagen/bio-parsers";
-import { eclToolList } from "../../../src/ToolBar";
 
 // import AddOrEditPrimerDialog from "../../../src/helperComponents/AddOrEditPrimerDialog";
 // import _chromData from "../../../scratch/B_reverse.json";
@@ -50,6 +49,41 @@ const MyCustomTab = connectToEditor(({ sequenceData = {} }) => {
     </div>
   );
 });
+
+// custom ordering of tools in the toolbar
+const eclToolList = [
+  "importCloudFile",
+
+  "dividerTool",
+
+  "saveTool",
+  "saveAsTool",
+
+  "dividerTool",
+
+  "importTool",
+  "downloadTool",
+
+  "dividerTool",
+
+  "undoTool",
+  "redoTool",
+
+  "dividerTool",
+
+  "cutsiteTool",
+  "featureTool",
+  "partTool",
+  "oligoTool",
+  "orfTool",
+
+  "dividerTool",
+
+  "visibilityTool",
+  "hotKeysTool",
+  "dividerTool",
+  "findTool"
+];
 
 const defaultState = {
   hideSingleImport: false,

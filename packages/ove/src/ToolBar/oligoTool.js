@@ -1,6 +1,7 @@
+import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
-import show_primer_ECL from "./ECLImages/show_primer_ECL.svg";
+import show_primer_ECL_31353B from "../images/ECLImages/show_primer_ECL_31353B.svg";
 
 export default connectToEditor(editorState => {
   return {
@@ -14,7 +15,13 @@ export default connectToEditor(editorState => {
   return (
     <ToolbarItem
       {...{
-        Icon: <img src={show_primer_ECL} alt="show_primer_ECL" />,
+        Icon: (
+          <Icon
+            icon={
+              <img src={show_primer_ECL_31353B} alt="show_primer_ECL_31353B" />
+            }
+          />
+        ),
         onIconClick: function () {
           annotationVisibilityToggle("primers");
         },

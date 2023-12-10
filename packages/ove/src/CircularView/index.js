@@ -313,7 +313,7 @@ export function CircularView(props) {
     {
       zIndex: 10,
       layerName: "cutsites",
-      fontStyle: "oblique",
+      fontStyle: "italic",
       Annotation: Cutsite,
       hideAnnotation: showSeqText,
       useStartAngle: true,
