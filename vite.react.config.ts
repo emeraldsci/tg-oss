@@ -94,7 +94,6 @@ export default ({ name }: { name: string; dir: string }) =>
                     entry: "./demo/index.js", // MUST
                     title: `${name} demo`, // optional, default: ''
                     body: `
-            <link rel="stylesheet" href="/style.css">
             <div id="app"><div id="demo"></div></div>
             ` // optional, default: '<div id="app"></div>'
                   }
@@ -179,14 +178,13 @@ export default ({ name }: { name: string; dir: string }) =>
             __dirname,
             "node_modules/@blueprintjs/datetime"
           ),
-          // "@teselagen/react-table": `/Users/tnrich/Sites/react-table`,
+
+          // "@teselagen/react-table/react-table.css": `/Users/tnrich/Sites/react-table/react-table.css`,
+          // "@teselagen/react-table": `/Users/tnrich/Sites/react-table/src`,
           "react-dom": path.join(__dirname, "node_modules/react-dom"),
           "react-redux": path.join(__dirname, "node_modules/react-redux"),
           "redux-form": path.join(__dirname, "node_modules/redux-form"),
           redux: path.join(__dirname, "node_modules/redux")
-          // "@teselagen/range-utils": path.resolve(__dirname, "../tg-oss/packages/range-utils/src"),
-          // "@teselagen/sequence-utils": path.resolve(__dirname, "../tg-oss/packages/sequence-utils/src"),
-          // "@teselagen/bio-parsers": path.resolve(__dirname, "../tg-oss/packages/bio-parsers/src"),
         }
       },
       test: {

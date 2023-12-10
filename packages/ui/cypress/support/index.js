@@ -23,6 +23,7 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// cypress/support/index.js
 const { isString } = require("lodash");
 
 Cypress.Commands.add("tgToggle", (type, onOrOff = true) => {
@@ -231,4 +232,25 @@ Cypress.Commands.add("typeTab", (shiftKey, ctrlKey) => {
       ctrlKey: ctrlKey
     });
   });
+});
+
+/**
+ * Triggers a cmd using the Help menu search
+ * @memberOf Cypress.Chainable#
+ * @name triggerFileCmd
+ * @function
+ * @param {String} text - the file cmd to trigger
+ */
+
+Cypress.Commands.add("triggerFileCmd", (text, { noEnter, noOpen } = {}) => {
+  if (!noOpen) {
+    cy.get("body").type("{meta}/");
+  }
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(400);
+  cy.focused().type(
+    (Cypress.config("isInteractive") ? "" : "            ") +
+      `${text}${noEnter ? "" : "{enter}"}`,
+    { delay: 40 }
+  );
 });

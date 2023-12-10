@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import {
   Button,
   Callout,
@@ -13,17 +12,12 @@ import {
   Tooltip
 } from "@blueprintjs/core";
 import Dropzone from "react-dropzone";
-// import { first } from "lodash";
 import classnames from "classnames";
 import { nanoid } from "nanoid";
-
 import papaparse, { unparse } from "papaparse";
-
 import downloadjs from "downloadjs";
-
 import { configure, makeObservable, observable } from "mobx";
 import { observer } from "mobx-react";
-
 import UploadCsvWizardDialog, {
   SimpleInsertDataDialog
 } from "../UploadCsvWizard";
@@ -132,7 +126,6 @@ function UploaderInner({
   callout: _callout,
   fileLimit,
   readBeforeUpload, //read the file using the browser's FileReader before passing it to onChange and/or uploading it
-  uploadInBulk, //tnr: not yet implemented
   showUploadList = true,
   beforeUpload,
   fileList, //list of files with options: {name, loading, error, url, originalName, downloadName}
@@ -146,11 +139,11 @@ function UploaderInner({
   overflowList,
   autoUnzip,
   disabled,
+  noBuildCsvOption,
   initializeForm,
   showFilesCount,
   threeDotMenuItems,
-  onPreviewClick,
-  axiosInstance = window.api || axios
+  onPreviewClick
 }) {
   //on component did mount
   const validateAgainstSchemaStore = useRef(new ValidateAgainstSchema());
@@ -305,7 +298,11 @@ function UploaderInner({
             ];
 
             const mainExampleData = {};
-            const mainSchema = a.validateAgainstSchema.fields.map(f => {
+            const fieldsToUse = [
+              ...validateAgainstSchema.fields,
+              ...(validateAgainstSchema.exampleDownloadFields ?? [])
+            ];
+            const mainSchema = fieldsToUse.map(f => {
               mainExampleData[f.displayName || f.path] =
                 f.example || f.defaultValue;
               return {
@@ -316,7 +313,7 @@ function UploaderInner({
               };
             });
             const b = await writeXlsxFile(
-              [[mainExampleData], a.validateAgainstSchema.fields, helperText],
+              [[mainExampleData], fieldsToUse, helperText],
               {
                 headerStyle: {
                   fontWeight: "bold"
@@ -335,13 +332,17 @@ function UploaderInner({
               description: "Download Example CSV File",
               exampleFile: () => {
                 const rows = [];
+                const schemaToUse = [
+                  ...a.validateAgainstSchema.fields,
+                  ...(a.validateAgainstSchema.exampleDownloadFields ?? [])
+                ];
                 rows.push(
-                  a.validateAgainstSchema.fields.map(f => {
+                  schemaToUse.map(f => {
                     return `${f.displayName || f.path}`;
                   })
                 );
                 rows.push(
-                  a.validateAgainstSchema.fields.map(f => {
+                  schemaToUse.map(f => {
                     return `${f.example || f.defaultValue || ""}`;
                   })
                 );
@@ -356,12 +357,16 @@ function UploaderInner({
               subtext: "Includes Upload Instructions and Column Info",
               exampleFile: handleDownloadXlsxFile
             },
-            {
-              description: manualEnterMessage,
-              subtext: manualEnterSubMessage,
-              icon: "manually-entered-data",
-              exampleFile: handleManuallyEnterData
-            }
+            ...(noBuildCsvOption
+              ? []
+              : [
+                  {
+                    description: manualEnterMessage,
+                    subtext: manualEnterSubMessage,
+                    icon: "manually-entered-data",
+                    exampleFile: handleManuallyEnterData
+                  }
+                ])
           ];
           delete a.exampleFile;
         }
@@ -387,69 +392,51 @@ function UploaderInner({
     if (!keepGoing) return;
 
     if (action) {
-      if (uploadInBulk) {
-        //tnr: not yet implemented
-        /* const config = {
-        onUploadProgress: function(progressEvent) {
-          let percentCompleted = Math.round(
-            progressEvent.loaded * 100 / progressEvent.total
-          );
-        }
-      };
-
-      axios
-        .post(action, data, config)
-        .then(function(res) {
-          onChange(res.data);
-        })
-        .catch(function(err) {
-        }); */
-      } else {
-        const responses = [];
-
-        await Promise.all(
-          acceptedFiles.map(fileToUpload => {
-            const data = new FormData();
-            data.append("file", fileToUpload);
-
-            return axiosInstance
-              .post(action, data)
-              .then(function (res) {
-                responses.push(res.data && res.data[0]);
-                onFileSuccess(res.data[0]).then(() => {
-                  cleanedFileList = cleanedFileList.map(file => {
-                    const fileToReturn = {
-                      ...file,
-                      ...res.data[0]
-                    };
-                    if (fileToReturn.id === fileToUpload.id) {
-                      fileToReturn.loading = false;
-                    }
-                    return fileToReturn;
-                  });
-                  onChange(cleanedFileList);
-                });
-              })
-              .catch(function (err) {
-                console.error("Error uploading file:", err);
-                responses.push({
-                  ...fileToUpload,
-                  error: err && err.msg ? err.msg : err
-                });
-                cleanedFileList = cleanedFileList.map(file => {
-                  const fileToReturn = { ...file };
-                  if (fileToReturn.id === fileToUpload.id) {
-                    fileToReturn.loading = false;
-                    fileToReturn.error = true;
-                  }
-                  return fileToReturn;
-                });
-                onChange(cleanedFileList);
+      const responses = [];
+      await Promise.all(
+        acceptedFiles.map(async fileToUpload => {
+          const data = new FormData();
+          data.append("file", fileToUpload);
+          try {
+            const res = await (window.api
+              ? window.api.post(action, data)
+              : fetch(action, {
+                  method: "POST",
+                  body: data
+                }));
+            responses.push(res.data && res.data[0]);
+            onFileSuccess(res.data[0]).then(() => {
+              cleanedFileList = cleanedFileList.map(file => {
+                const fileToReturn = {
+                  ...file,
+                  ...res.data[0]
+                };
+                if (fileToReturn.id === fileToUpload.id) {
+                  fileToReturn.loading = false;
+                }
+                return fileToReturn;
               });
-          })
-        );
-        onFieldSubmit(responses);
-      }
+              onChange(cleanedFileList);
+            });
+          } catch (err) {
+            console.error("Error uploading file:", err);
+            responses.push({
+              ...fileToUpload,
+              error: err && err.msg ? err.msg : err
+            });
+            cleanedFileList = cleanedFileList.map(file => {
+              const fileToReturn = { ...file };
+              if (fileToReturn.id === fileToUpload.id) {
+                fileToReturn.loading = false;
+                fileToReturn.error = true;
+              }
+              return fileToReturn;
+            });
+            onChange(cleanedFileList);
+          }
+        })
+      );
+      onFieldSubmit(responses);
     } else {
       onChange(
         cleanedFileList.map(function (file) {
@@ -943,7 +930,7 @@ function UploaderInner({
                       )}
                       {innerText ||
                         (minimal ? "Upload" : "Click or drag to upload")}
-                      {validateAgainstSchema && (
+                      {validateAgainstSchema && !noBuildCsvOption && (
                         <div
                           style={{
                             textAlign: "center",

@@ -8,23 +8,17 @@ describe("filterSequenceString", () => {
     });
     expect(str).toBe("tatuuaga");
     // expect(warnings[0]).toBe('Replaced "t" with "u" 2 times');
-    expect(warnings[0]).toBe(
-      "Invalid character(s) detected and removed: -, - "
-    );
+    expect(warnings[0]).toBe("Invalid character(s) detected and removed: - ");
   });
   it("should not convert u's to t's for isDna (default isDna=true) seqs", () => {
     const [str, warnings] = filterSequenceString("tatuuag--a", {});
     // expect(warnings[0]).toBe('Replaced "u" with "t" 2 times');
-    expect(warnings[0]).toBe(
-      "Invalid character(s) detected and removed: -, - "
-    );
+    expect(warnings[0]).toBe("Invalid character(s) detected and removed: - ");
     expect(str).toBe("tatuuaga");
   });
   it("should filter out unwanted chars", () => {
     const [str, warnings] = filterSequenceString("tatag--a");
-    expect(warnings[0]).toBe(
-      "Invalid character(s) detected and removed: -, - "
-    );
+    expect(warnings[0]).toBe("Invalid character(s) detected and removed: - ");
     expect(str).toBe("tataga");
   });
   it("should handle additional chars option", () => {
@@ -51,7 +45,7 @@ describe("filterSequenceString", () => {
     );
     // expect(warnings[0]).toBe(`Replaced "." with "*" 2 times`);
     expect(warnings[0]).toBe(
-      'Invalid character(s) detected and removed: 3, 4, 2, ", ", ", ,, ,, ., ., / '
+      'Invalid character(s) detected and removed: 3, 4, 2, ", ,, ., / '
     );
     expect(str).toBe("bbbxtgalmfwkqespvicyhrnd");
   });
@@ -62,6 +56,19 @@ describe("filterSequenceString", () => {
     expect(warnings.length).toBe(0);
     expect(str).toBe("xtgalmfWKQEspvicyhrnd");
   });
+
+  it("when isProtein: true it should not filter this aa seq", () => {
+    const [str] = filterSequenceString(
+      "mhhhhhhgsgsmledlkrqvleanlalpkhnlasgssghvsavdrergvfviapsgvdfrimtaddmvvvsietgevvegekppaedtpthrllyqafpsiggivhthsrhatiwaqagqsipatgtthadhfygtipctrkmtdaeingeyewetgnvivetfekqgidaaqmpgvlvhshgpfawgknaedavhnaivleevaymgifcrqlapqlpdmqqtllnkhylrkhgakayygq",
+      {
+        isProtein: true
+      }
+    );
+
+    expect(str).toBe(
+      `mhhhhhhgsgsmledlkrqvleanlalpkhnlasgssghvsavdrergvfviapsgvdfrimtaddmvvvsietgevvegekppaedtpthrllyqafpsiggivhthsrhatiwaqagqsipatgtthadhfygtipctrkmtdaeingeyewetgnvivetfekqgidaaqmpgvlvhshgpfawgknaedavhnaivleevaymgifcrqlapqlpdmqqtllnkhylrkhgakayygq`
+    );
+  });
   it("when isProtein: true, it should convert . to *", () => {
     const [str] = filterSequenceString(
       'BXZJUO*bbb342"""xtgalbmfwkqespvicyhrnd,,../',
@@ -70,6 +77,6 @@ describe("filterSequenceString", () => {
       }
     );
 
-    expect(str).toBe("BXZJUO*bbbxtgalbmfwkqespvicyhrnd");
+    expect(str).toBe("BXZJUObbbxtgalbmfwkqespvicyhrnd");
   });
 });
