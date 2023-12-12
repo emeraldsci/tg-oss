@@ -10,11 +10,11 @@ const VerticalLine = ({ height, color, thickness }) => {
   return <div style={lineStyle}></div>;
 };
 
-const verticalLine = () => (
+const Divider = () => (
   <div style={{ display: "flex", alignItems: "center" }}>
     <div className="veToolbarSpacer" />
     <VerticalLine height="30px" color="#bdc8d2" thickness={2} />
   </div>
 );
 
-export default verticalLine;
+export default Divider;

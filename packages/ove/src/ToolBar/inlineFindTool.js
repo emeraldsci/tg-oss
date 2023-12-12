@@ -18,11 +18,7 @@ export default connectToEditor(({ findTool = {} }) => {
             <Icon
               data-test="ve-find-tool-toggle"
               icon={
-                <img
-                  class="bp3-icon"
-                  src={search_ECL_31353B}
-                  alt="search_ECL_31353B"
-                />
+                <img class="bp3-icon" src={search_ECL_31353B} alt="Search" />
               }
             />
           </div>

@@ -9,19 +9,14 @@ export default connectToEditor()(({ toolbarItemProps }) => {
       {...{
         Icon: (
           <Icon
-            icon={
-              <img
-                src={open_cloud_file_ECL_31353B}
-                alt="open_cloud_file_ECL_31353B"
-              />
-            }
+            icon={<img src={open_cloud_file_ECL_31353B} alt="Open Plasmid" />}
           />
         ),
         onIconClick: () => {
-          window.toastr.success("Import Cloud File");
+          window.toastr.success("Import Plasmid");
         },
         disabled: false,
-        tooltip: <span>Import Cloud File</span>,
+        tooltip: <span>Import Plasmid</span>,
         ...toolbarItemProps
       }}
     />

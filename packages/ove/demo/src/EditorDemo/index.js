@@ -127,7 +127,7 @@ const defaultState = {
   onImport: true,
   beforeAnnotationCreate: true,
   onSave: true,
-  onSaveAs: false,
+  onSaveAs: true,
   onRename: true,
   onDuplicate: true,
   onSelectionOrCaretChanged: false,

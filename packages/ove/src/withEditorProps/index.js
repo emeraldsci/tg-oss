@@ -50,8 +50,8 @@ const getUpperOrLowerSeq = defaultMemoize(
     uppercaseSequenceMapFont === "uppercase"
       ? sequence.toUpperCase()
       : uppercaseSequenceMapFont === "lowercase"
-      ? sequence.toLowerCase()
-      : sequence
+        ? sequence.toLowerCase()
+        : sequence
 );
 
 const getTypesToOmit = annotationsToSupport => {
@@ -130,6 +130,48 @@ const generatePngFromPrintDialog = async props => {
   hideDialog();
   return result;
 };
+
+export const handleSaveAs =
+  props =>
+  async (opts = {}) => {
+    const {
+      onSaveAs,
+      generatePng,
+      readOnly,
+      alwaysAllowSave,
+      sequenceData,
+      lastSavedIdUpdate
+    } = props;
+
+    const saveAsHandler = onSaveAs;
+
+    const updateLastSavedIdToCurrent = () => {
+      lastSavedIdUpdate(sequenceData.stateTrackingId);
+    };
+
+    // Optionally generate png
+    if (generatePng) {
+      opts.pngFile = await generatePngFromPrintDialog(props);
+    }
+
+    // TODO: pass additionalProps (blob or error) to the user
+    const promiseOrVal =
+      (!readOnly || alwaysAllowSave || opts.isSaveAs) &&
+      saveAsHandler &&
+      saveAsHandler(
+        opts,
+        tidyUpSequenceData(sequenceData, {
+          doNotRemoveInvalidChars: true,
+          annotationsAsObjects: true
+        }),
+        props,
+        updateLastSavedIdToCurrent
+      );
+
+    if (promiseOrVal && promiseOrVal.then) {
+      return promiseOrVal.then(updateLastSavedIdToCurrent);
+    }
+  };
 
 export const handleSave =
   props =>
@@ -415,6 +457,7 @@ export default compose(
   }),
   withHandlers({
     handleSave,
+    handleSaveAs,
     importSequenceFromFile,
     exportSequenceToFile,
     updateCircular,
@@ -441,16 +484,16 @@ export default compose(
             selectionLayer.start > -1
               ? { ...selectionLayer, id: undefined }
               : caretPosition > -1
-              ? {
-                  start: caretPosition,
-                  end: sequenceData.isProtein
-                    ? caretPosition + 2
-                    : caretPosition
-                }
-              : {
-                  start: 0,
-                  end: sequenceData.isProtein ? 2 : 0
-                };
+                ? {
+                    start: caretPosition,
+                    end: sequenceData.isProtein
+                      ? caretPosition + 2
+                      : caretPosition
+                  }
+                : {
+                    start: 0,
+                    end: sequenceData.isProtein ? 2 : 0
+                  };
           showAddOrEditAnnotationDialog({
             type: key.toLowerCase(),
             annotation: {

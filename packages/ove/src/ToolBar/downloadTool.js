@@ -19,10 +19,7 @@ export default connectToEditor()(({ toolbarItemProps }) => {
           <Icon
             data-test="veDownloadTool"
             icon={
-              <img
-                src={export_sequence_ECL_31353B}
-                alt="export_sequence_ECL_31353B"
-              />
+              <img src={export_sequence_ECL_31353B} alt="Export Sequence" />
             }
           />
         ),

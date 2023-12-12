@@ -20,12 +20,7 @@ export default connectToEditor(
       {...{
         Icon: (
           <Icon
-            icon={
-              <img
-                src={reading_frame_ECL_31353B}
-                alt="reading_frame_ECL_31353B"
-              />
-            }
+            icon={<img src={reading_frame_ECL_31353B} alt="Reading Frame" />}
           />
         ),
         onIconClick: function () {

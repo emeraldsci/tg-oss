@@ -16,9 +16,7 @@ export default connectToEditor(({ toolBar = {} }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: (
-          <Icon icon={<img src={view_ECL_31353B} alt="view_ECL_31353B" />} />
-        ),
+        Icon: <Icon icon={<img src={view_ECL_31353B} alt="View" />} />,
         onIconClick: "toggleDropdown",
         Dropdown: VisibilityOptions,
         noDropdownIcon: true,

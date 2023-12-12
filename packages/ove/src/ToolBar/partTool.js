@@ -23,9 +23,7 @@ export default connectToEditor(
     <ToolbarItem
       {...{
         Icon: (
-          <Icon
-            icon={<img src={show_part_ECL_31353B} alt="show_part_ECL_31353B" />}
-          />
+          <Icon icon={<img src={show_part_ECL_31353B} alt="Show Part" />} />
         ),
         onIconClick: function () {
           annotationVisibilityToggle("parts");

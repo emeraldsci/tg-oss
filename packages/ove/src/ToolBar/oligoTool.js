@@ -16,11 +16,7 @@ export default connectToEditor(editorState => {
     <ToolbarItem
       {...{
         Icon: (
-          <Icon
-            icon={
-              <img src={show_primer_ECL_31353B} alt="show_primer_ECL_31353B" />
-            }
-          />
+          <Icon icon={<img src={show_primer_ECL_31353B} alt="Show Primer" />} />
         ),
         onIconClick: function () {
           annotationVisibilityToggle("primers");

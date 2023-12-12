@@ -16,10 +16,7 @@ export default compose(
         Icon: (
           <Icon
             icon={
-              <img
-                src={import_sequence_ECL_31353B}
-                alt="import_sequence_ECL_31353B"
-              />
+              <img src={import_sequence_ECL_31353B} alt="Import Sequence" />
             }
           />
         ),

@@ -16,12 +16,7 @@ export default connectToEditor(
       {...{
         Icon: (
           <Icon
-            icon={
-              <img
-                src={show_features_ECL_31353B}
-                alt="show_features_ECL_31353B"
-              />
-            }
+            icon={<img src={show_features_ECL_31353B} alt="Show Features" />}
           />
         ),
         onIconClick: function () {

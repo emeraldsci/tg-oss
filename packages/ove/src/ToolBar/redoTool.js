@@ -18,9 +18,9 @@ export default connectToEditor(editorState => {
   //for custom icons blueprint does not change on the disabled states
 
   const ourIcon = disabled ? (
-    <img src={redo_ECL_31353B} alt="redo_ECL_31353B" class="toolbar-disabled" />
+    <img src={redo_ECL_31353B} alt="Redo" class="toolbar-disabled" />
   ) : (
-    <img src={redo_ECL_31353B} alt="redo_ECL_31353B" />
+    <img src={redo_ECL_31353B} alt="Redo" />
   );
 
   return (

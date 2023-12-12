@@ -8,14 +8,7 @@ export default compose()(({ toolbarItemProps, openHotkeyDialog }) => {
     <ToolbarItem
       {...{
         Icon: (
-          <Icon
-            icon={
-              <img
-                src={hotkeys_editor_ECL_31353B}
-                alt="hotkeys_editor_ECL_31353B"
-              />
-            }
-          />
+          <Icon icon={<img src={hotkeys_editor_ECL_31353B} alt="Hot Keys" />} />
         ),
         onIconClick: () => {
           openHotkeyDialog();

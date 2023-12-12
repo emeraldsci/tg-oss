@@ -22,7 +22,7 @@ export default connectToEditor(
         Icon: (
           <Icon
             data-test="cutsiteHideShowTool"
-            icon={<img src={cut_sites_ECL_31353B} alt="cut_sites_ECL_31353B" />}
+            icon={<img src={cut_sites_ECL_31353B} alt="Cut Sites" />}
           />
         ),
         onIconClick: function () {

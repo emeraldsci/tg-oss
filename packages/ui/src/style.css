@@ -102,7 +102,6 @@ h6.bp3-heading {
 /* bp3 fix https://github.com/palantir/blueprint/issues/2807 */
 span.bp3-popover-target {
   display: block;
-  color: #9aa7b4;
 }
 
 .bp3-portal {

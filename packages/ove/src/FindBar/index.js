@@ -179,12 +179,7 @@ export class FindBar extends React.Component {
               <Button
                 data-test="veFindBarOptionsToggle"
                 minimal
-                icon={
-                  <img
-                    src={search_tools_ECL_31353B}
-                    alt="search_tools_ECL_31353B"
-                  />
-                }
+                icon={<img src={search_tools_ECL_31353B} alt="Search Tool" />}
               />
             }
             content={
@@ -306,7 +301,7 @@ export class FindBar extends React.Component {
                 <img
                   className="bp3-icon"
                   src={search_ECL_31353B}
-                  alt="search_ECL_31353B"
+                  alt="Search"
                 />
               }
             />
