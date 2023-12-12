@@ -1,3 +1,4 @@
+import React from "react";
 import ToolbarItem from "./ToolbarItem";
 import { compose } from "redux";
 import { Icon } from "@blueprintjs/core";
