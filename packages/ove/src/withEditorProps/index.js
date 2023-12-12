@@ -131,48 +131,6 @@ const generatePngFromPrintDialog = async props => {
   return result;
 };
 
-export const handleSaveAs =
-  props =>
-  async (opts = {}) => {
-    const {
-      onSaveAs,
-      generatePng,
-      readOnly,
-      alwaysAllowSave,
-      sequenceData,
-      lastSavedIdUpdate
-    } = props;
-
-    const saveAsHandler = onSaveAs;
-
-    const updateLastSavedIdToCurrent = () => {
-      lastSavedIdUpdate(sequenceData.stateTrackingId);
-    };
-
-    // Optionally generate png
-    if (generatePng) {
-      opts.pngFile = await generatePngFromPrintDialog(props);
-    }
-
-    // TODO: pass additionalProps (blob or error) to the user
-    const promiseOrVal =
-      (!readOnly || alwaysAllowSave || opts.isSaveAs) &&
-      saveAsHandler &&
-      saveAsHandler(
-        opts,
-        tidyUpSequenceData(sequenceData, {
-          doNotRemoveInvalidChars: true,
-          annotationsAsObjects: true
-        }),
-        props,
-        updateLastSavedIdToCurrent
-      );
-
-    if (promiseOrVal && promiseOrVal.then) {
-      return promiseOrVal.then(updateLastSavedIdToCurrent);
-    }
-  };
-
 export const handleSave =
   props =>
   async (opts = {}) => {
@@ -457,7 +415,6 @@ export default compose(
   }),
   withHandlers({
     handleSave,
-    handleSaveAs,
     importSequenceFromFile,
     exportSequenceToFile,
     updateCircular,
