@@ -3,6 +3,7 @@ import { Icon } from "@blueprintjs/core";
 import FindBar from "../FindBar";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
+import search_ECL_31353B from "../images/ECLImages/search_ECL_31353B.svg";
 
 export default connectToEditor(({ findTool = {} }) => {
   return {
@@ -14,8 +15,12 @@ export default connectToEditor(({ findTool = {} }) => {
       {...{
         Icon: !isOpen ? (
           <div>
-            <Icon data-test="ve-find-tool-toggle" icon="search" />
-            <Icon icon="caret-right" />
+            <Icon
+              data-test="ve-find-tool-toggle"
+              icon={
+                <img class="bp3-icon" src={search_ECL_31353B} alt="Search" />
+              }
+            />
           </div>
         ) : (
           <FindBar editorName={editorName} />

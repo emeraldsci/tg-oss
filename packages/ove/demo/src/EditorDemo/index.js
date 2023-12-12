@@ -5,7 +5,6 @@ import {
 } from "@teselagen/sequence-utils";
 import React from "react";
 import { isRangeOrPositionWithinRange } from "@teselagen/range-utils";
-import isMobile from "is-mobile";
 import immer from "immer";
 import biomsa from "biomsa";
 
@@ -30,7 +29,6 @@ import pluralize from "pluralize";
 import { useEffect, useState } from "react";
 import _chromData from "../../../scratch/ab1ParsedGFPvv50.json";
 import { convertBasePosTraceToPerBpTrace } from "@teselagen/bio-parsers";
-import { defaultToolList } from "../../../src/ToolBar";
 
 // import AddOrEditPrimerDialog from "../../../src/helperComponents/AddOrEditPrimerDialog";
 // import _chromData from "../../../scratch/B_reverse.json";
@@ -52,16 +50,51 @@ const MyCustomTab = connectToEditor(({ sequenceData = {} }) => {
   );
 });
 
+// custom ordering of tools in the toolbar
+const eclToolList = [
+  "importCloudFile",
+
+  "dividerTool",
+
+  "saveTool",
+  "saveAsTool",
+
+  "dividerTool",
+
+  "importTool",
+  "downloadTool",
+
+  "dividerTool",
+
+  "undoTool",
+  "redoTool",
+
+  "dividerTool",
+
+  "cutsiteTool",
+  "featureTool",
+  "partTool",
+  "oligoTool",
+  "orfTool",
+
+  "dividerTool",
+
+  "visibilityTool",
+  "hotKeysTool",
+  "dividerTool",
+  "findTool"
+];
+
 const defaultState = {
   hideSingleImport: false,
   readOnly: false,
-  showMenuBar: true,
+  showMenuBar: false,
   customizeTabs: false,
   displayMenuBarAboveTools: true,
   withPreviewMode: false,
   disableSetReadOnly: false,
   disableBpEditing: false,
-  showReadOnly: true,
+  showReadOnly: false,
   showCircularity: true,
   showMoleculeType: true,
   showGCContentByDefault: false,
@@ -74,9 +107,9 @@ const defaultState = {
   overrideRightClickExample: false,
   overrideAddEditFeatureDialog: false,
   clickOverridesExample: false,
-  showAvailability: true,
+  showAvailability: false,
   showCicularViewInternalLabels: true,
-  showDemoOptions: !isMobile(),
+  showDemoOptions: false,
   shouldAutosave: false,
   generatePng: false,
   allowPanelTabDraggable: true,
@@ -94,7 +127,7 @@ const defaultState = {
   onImport: true,
   beforeAnnotationCreate: true,
   onSave: true,
-  onSaveAs: false,
+  onSaveAs: true,
   onRename: true,
   onDuplicate: true,
   onSelectionOrCaretChanged: false,
@@ -283,6 +316,7 @@ export default class EditorDemo extends React.Component {
         "orfTool",
         "versionHistoryTool",
         {
+          Icon: <div> test </div>,
           name: "alignmentTool",
           onIconClick: () => {
             const { item } = this.props;
@@ -464,7 +498,7 @@ This feature requires beforeSequenceInsertOrDelete toggle to be true to be enabl
     const dropTarget = document.querySelector(".veTabProperties")
           dragMock.dragStart(dragSource).dragEnter(dropTarget).dragOver(dropTarget).delay(500).dragEnd()
         }}>click me!</button> */}
-        <div style={{ width: 250 }}>
+        {/* <div style={{ width: 250 }}>
           {renderToggle({
             that: this,
             alwaysShow: true,
@@ -472,7 +506,7 @@ This feature requires beforeSequenceInsertOrDelete toggle to be true to be enabl
             label: "Show Demo Options",
             hotkey: `cmd+'`
           })}
-        </div>
+        </div> */}
 
         <div
           style={{
@@ -2056,11 +2090,12 @@ clickOverrides: {
 
           <Editor
             ToolBarProps={{
-              toolList: defaultToolList.map(t => {
+              toolList: eclToolList.map(t => {
                 if (t !== "alignmentTool") return t;
                 return {
                   name: "alignmentTool",
-                  Dropdown: SimpleAlignDropdown
+                  Dropdown: SimpleAlignDropdown,
+                  Icon: <Icon data-test="alignmentTool" icon="align-right" />
                 };
               })
             }}

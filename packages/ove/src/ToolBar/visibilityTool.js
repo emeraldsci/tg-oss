@@ -6,6 +6,7 @@ import getCommands from "../commands";
 import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import withEditorProps from "../withEditorProps";
+import view_ECL_31353B from "../images/ECLImages/view_ECL_31353B.svg";
 
 export default connectToEditor(({ toolBar = {} }) => {
   return {
@@ -15,7 +16,7 @@ export default connectToEditor(({ toolBar = {} }) => {
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon icon="eye-open" />,
+        Icon: <Icon icon={<img src={view_ECL_31353B} alt="View" />} />,
         onIconClick: "toggleDropdown",
         Dropdown: VisibilityOptions,
         noDropdownIcon: true,
