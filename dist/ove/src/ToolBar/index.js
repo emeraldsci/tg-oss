@@ -24,6 +24,12 @@ import redoTool from "./redoTool";
 import isMobile from "is-mobile";
 import { useMemo } from "react";
 
+//Extra Tools
+import saveAsTool from "./saveAsTool";
+import hotKeysTool from "./hotKeysTool";
+import importCloudFile from "./importPlasmidTool";
+import dividerTool from "./dividerComponent";
+
 const allTools = {
   downloadTool,
   importTool,
@@ -40,7 +46,13 @@ const allTools = {
   saveTool,
   visibilityTool,
   undoTool,
-  redoTool
+  redoTool,
+
+  //added tools
+  saveAsTool,
+  hotKeysTool,
+  importCloudFile,
+  dividerTool
 };
 
 export function ToolBar(props) {
@@ -126,6 +138,7 @@ export function ToolBar(props) {
             editorName,
             ...toolOverride
           }}
+          openHotkeyDialog={openHotkeyDialog}
           editorName={editorName}
           key={toolName}
         />
@@ -142,6 +155,7 @@ export function ToolBar(props) {
       {contentLeft}
       <div
         style={{
+          backgroundColor: "#d6dce2",
           ...(displayMenuBarAboveTools && showMenuBar
             ? {
                 display: "flex",
@@ -152,7 +166,7 @@ export function ToolBar(props) {
             : {
                 display: "flex",
                 width: "100%",
-                justifyContent: "center",
+                justifyContent: "left",
                 flexWrap: "wrap"
               })
         }}

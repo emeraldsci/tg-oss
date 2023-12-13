@@ -50,6 +50,7 @@ class _RowView extends React.Component {
   estimateRowHeight = (index, cache) => {
     const { annotationVisibility, annotationLabelVisibility, sequenceData } =
       this.props;
+
     return estimateRowHeight({
       index,
       cache,
@@ -61,6 +62,7 @@ class _RowView extends React.Component {
       annotationLabelVisibility
     });
   };
+
   getNearestCursorPositionToMouseEvent = (rowData, event, callback) => {
     const { charWidth = defaultCharWidth, sequenceData } = this.props;
     const sequenceLength = sequenceData.noSequence

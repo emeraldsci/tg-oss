@@ -5,6 +5,7 @@ import ToolbarItem from "./ToolbarItem";
 import { connectToEditor } from "../withEditorProps";
 import { userDefinedHandlersAndOpts } from "../Editor/userDefinedHandlersAndOpts";
 import { pick } from "lodash";
+import cut_sites_ECL_31353B from "../images/ECLImages/cut_sites_ECL_31353B.svg";
 
 export default connectToEditor(
   ({ readOnly, annotationVisibility = {}, toolBar = {} }) => {
@@ -18,7 +19,12 @@ export default connectToEditor(
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon data-test="cutsiteHideShowTool" icon="cut" />,
+        Icon: (
+          <Icon
+            data-test="cutsiteHideShowTool"
+            icon={<img src={cut_sites_ECL_31353B} alt="Cut Sites" />}
+          />
+        ),
         onIconClick: function () {
           annotationVisibilityToggle("cutsites");
         },

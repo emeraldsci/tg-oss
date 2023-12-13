@@ -95,6 +95,7 @@ class Sequence extends React.Component {
       className:
         "ve-monospace-font " + (isReverse ? " ve-sequence-reverse" : "")
     };
+
     if (scrollData) {
       const numChunks = Math.ceil(rowSeqLen / chunkSize);
       const chunkWidth = chunkSize * charWidth;
@@ -103,6 +104,7 @@ class Sequence extends React.Component {
         scrollData,
         width
       });
+
       inner = times(numChunks, i => {
         const seqChunk = getChunk(sequence, chunkSize, i);
         const textLength = charWidth * seqChunk.length;

@@ -670,12 +670,9 @@ const editCommandDefs = {
         if (props.uppercaseSequenceMapFont !== "noPreference") {
           toastFired = true;
           props.updateSequenceCase("noPreference");
-          window.toastr.success(
-            `Sequence Case Edited Successfully. To avoid confusion we set: 'View > Sequence Case' to 'No Preference'`,
-            {
-              timeout: 10000
-            }
-          );
+          window.toastr.success(`Sequence Case Edited Successfully.'`, {
+            timeout: 10000
+          });
         }
         const func = type.includes("lower") ? "toLowerCase" : "toUpperCase";
         let newSeq;

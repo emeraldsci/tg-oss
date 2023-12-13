@@ -50,8 +50,8 @@ const getUpperOrLowerSeq = defaultMemoize(
     uppercaseSequenceMapFont === "uppercase"
       ? sequence.toUpperCase()
       : uppercaseSequenceMapFont === "lowercase"
-      ? sequence.toLowerCase()
-      : sequence
+        ? sequence.toLowerCase()
+        : sequence
 );
 
 const getTypesToOmit = annotationsToSupport => {
@@ -441,16 +441,16 @@ export default compose(
             selectionLayer.start > -1
               ? { ...selectionLayer, id: undefined }
               : caretPosition > -1
-              ? {
-                  start: caretPosition,
-                  end: sequenceData.isProtein
-                    ? caretPosition + 2
-                    : caretPosition
-                }
-              : {
-                  start: 0,
-                  end: sequenceData.isProtein ? 2 : 0
-                };
+                ? {
+                    start: caretPosition,
+                    end: sequenceData.isProtein
+                      ? caretPosition + 2
+                      : caretPosition
+                  }
+                : {
+                    start: 0,
+                    end: sequenceData.isProtein ? 2 : 0
+                  };
           showAddOrEditAnnotationDialog({
             type: key.toLowerCase(),
             annotation: {
@@ -930,6 +930,7 @@ const getSequenceDataToUse = createSelector(
   s.filteredPrimersSelector,
   s.filteredPartsSelector,
   s.orfsSelector,
+
   (
     uppercaseSequenceMapFont,
     sequenceData,

@@ -123,6 +123,7 @@ class ToolbarItem extends React.Component {
         ) : null}
       </div>
     );
+
     const content = (
       <div
         ref={n => {

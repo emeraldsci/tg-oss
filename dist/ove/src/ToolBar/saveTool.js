@@ -4,6 +4,7 @@ import ToolbarItem from "./ToolbarItem";
 import { connectToEditor, handleSave } from "../withEditorProps";
 import { withHandlers } from "recompose";
 import { compose } from "redux";
+import save_ECL_31353B from "../images/ECLImages/save_ECL_31353B.svg";
 
 export default compose(
   connectToEditor(
@@ -26,12 +27,21 @@ export default compose(
   hasBeenSaved,
   onSave
 }) => {
+  const disabledIcon = alwaysAllowSave
+    ? false
+    : !onSave || hasBeenSaved || readOnly;
+  const ourIcon = disabledIcon ? (
+    <img src={save_ECL_31353B} alt="Save" class="toolbar-disabled" />
+  ) : (
+    <img src={save_ECL_31353B} alt="Save" />
+  );
+
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon data-test="saveTool" icon="floppy-disk" />,
+        Icon: <Icon data-test="saveTool" icon={ourIcon} />,
         onIconClick: handleSave,
-        disabled: alwaysAllowSave ? false : !onSave || hasBeenSaved || readOnly,
+        disabled: disabledIcon,
         tooltip: (
           <span>
             Save <span style={{ fontSize: 10 }}>(Cmd/Ctrl+S)</span>

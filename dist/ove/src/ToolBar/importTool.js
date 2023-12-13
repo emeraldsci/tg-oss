@@ -4,6 +4,7 @@ import Dropzone from "react-dropzone";
 import ToolbarItem from "./ToolbarItem";
 import { compose, withHandlers } from "recompose";
 import { importSequenceFromFile, connectToEditor } from "../withEditorProps";
+import import_sequence_ECL_31353B from "../images/ECLImages/import_sequence_ECL_31353B.svg";
 
 export default compose(
   connectToEditor(),
@@ -12,7 +13,13 @@ export default compose(
   return (
     <ToolbarItem
       {...{
-        Icon: <Icon data-test="veImportTool" icon="export" />,
+        Icon: (
+          <Icon
+            icon={
+              <img src={import_sequence_ECL_31353B} alt="Import Sequence" />
+            }
+          />
+        ),
         IconWrapper: Dropzone,
         IconWrapperProps: {
           multiple: false,
