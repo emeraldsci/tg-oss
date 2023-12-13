@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "@blueprintjs/core";
 import ToolbarItem from "./ToolbarItem";
-import { connectToEditor, handleSave } from "../withEditorProps";
+import { connectToEditor } from "../withEditorProps";
 import { withHandlers } from "recompose";
 import { compose } from "redux";
 import save_as_ECL_31353B from "../images/ECLImages/save_as_ECL_31353B.svg";
@@ -18,8 +18,8 @@ export default compose(
       };
     }
   ),
-  withHandlers({ handleSave })
-)(({ toolbarItemProps, handleSave }) => {
+  withHandlers({})
+)(({ toolbarItemProps }) => {
   return (
     <ToolbarItem
       {...{
@@ -29,7 +29,9 @@ export default compose(
             icon={<img src={save_as_ECL_31353B} alt="Save As" />}
           />
         ),
-        onIconClick: handleSave({ isSaveAs: true }),
+        onIconClick: () => {
+          window.toastr.success("Save As Called");
+        }, // handleSave({ isSaveAs: true }),
         disabled: false,
         tooltip: (
           <span>
