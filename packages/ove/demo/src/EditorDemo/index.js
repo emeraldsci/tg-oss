@@ -52,7 +52,7 @@ const MyCustomTab = connectToEditor(({ sequenceData = {} }) => {
 
 // custom ordering of tools in the toolbar
 const eclToolList = [
-  "importCloudFile",
+  "importPlasmid",
 
   "dividerTool",
 
@@ -81,7 +81,9 @@ const eclToolList = [
 
   "visibilityTool",
   "hotKeysTool",
+
   "dividerTool",
+
   "findTool"
 ];
 

@@ -31,7 +31,7 @@ export default compose(
     ? false
     : !onSave || hasBeenSaved || readOnly;
   const ourIcon = disabledIcon ? (
-    <img src={save_ECL_31353B} alt="Save" class="toolbar-disabled" />
+    <img src={save_ECL_31353B} alt="Save" className="toolbar-disabled" />
   ) : (
     <img src={save_ECL_31353B} alt="Save" />
   );

@@ -27,7 +27,7 @@ import { useMemo } from "react";
 //Extra Tools
 import saveAsTool from "./saveAsTool";
 import hotKeysTool from "./hotKeysTool";
-import importCloudFile from "./importPlasmidTool";
+import importPlasmid from "./importPlasmidTool";
 import dividerTool from "./dividerComponent";
 
 const allTools = {
@@ -51,7 +51,7 @@ const allTools = {
   //added tools
   saveAsTool,
   hotKeysTool,
-  importCloudFile,
+  importPlasmid,
   dividerTool
 };
 
@@ -140,7 +140,7 @@ export function ToolBar(props) {
           }}
           openHotkeyDialog={openHotkeyDialog}
           editorName={editorName}
-          key={toolName}
+          key={`${toolName}-${index}`}
         />
       );
     }
