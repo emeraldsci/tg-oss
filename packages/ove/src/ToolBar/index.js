@@ -27,8 +27,13 @@ import { useMemo } from "react";
 //Extra Tools
 import saveAsTool from "./saveAsTool";
 import hotKeysTool from "./hotKeysTool";
-import importCloudFile from "./importPlasmidTool";
-import dividerTool from "./dividerComponent";
+import importPlasmid from "./importPlasmidTool";
+import dividerTool1 from "./dividerComponent";
+import dividerTool2 from "./dividerComponent";
+import dividerTool3 from "./dividerComponent";
+import dividerTool4 from "./dividerComponent";
+import dividerTool5 from "./dividerComponent";
+import dividerTool6 from "./dividerComponent";
 
 const allTools = {
   downloadTool,
@@ -51,8 +56,13 @@ const allTools = {
   //added tools
   saveAsTool,
   hotKeysTool,
-  importCloudFile,
-  dividerTool
+  importPlasmid,
+  dividerTool1,
+  dividerTool2,
+  dividerTool3,
+  dividerTool4,
+  dividerTool5,
+  dividerTool6
 };
 
 export function ToolBar(props) {

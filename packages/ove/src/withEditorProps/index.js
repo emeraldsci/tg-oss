@@ -164,6 +164,7 @@ export const handleSave =
           doNotRemoveInvalidChars: true,
           annotationsAsObjects: true
         }),
+        jsonToGenbank(sequenceData),
         props,
         updateLastSavedIdToCurrent
       );
