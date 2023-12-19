@@ -28,12 +28,7 @@ import { useMemo } from "react";
 import saveAsTool from "./saveAsTool";
 import hotKeysTool from "./hotKeysTool";
 import importPlasmid from "./importPlasmidTool";
-import dividerTool1 from "./dividerComponent";
-import dividerTool2 from "./dividerComponent";
-import dividerTool3 from "./dividerComponent";
-import dividerTool4 from "./dividerComponent";
-import dividerTool5 from "./dividerComponent";
-import dividerTool6 from "./dividerComponent";
+import dividerTool from "./dividerComponent";
 
 const allTools = {
   downloadTool,
@@ -57,12 +52,7 @@ const allTools = {
   saveAsTool,
   hotKeysTool,
   importPlasmid,
-  dividerTool1,
-  dividerTool2,
-  dividerTool3,
-  dividerTool4,
-  dividerTool5,
-  dividerTool6
+  dividerTool
 };
 
 export function ToolBar(props) {
@@ -150,7 +140,7 @@ export function ToolBar(props) {
           }}
           openHotkeyDialog={openHotkeyDialog}
           editorName={editorName}
-          key={toolName}
+          key={`${toolName}-${index}`}
         />
       );
     }

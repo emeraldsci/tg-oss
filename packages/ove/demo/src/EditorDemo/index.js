@@ -54,22 +54,22 @@ const MyCustomTab = connectToEditor(({ sequenceData = {} }) => {
 const eclToolList = [
   "importPlasmid",
 
-  "dividerTool1",
+  "dividerTool",
 
   "saveTool",
   "saveAsTool",
 
-  "dividerTool2",
+  "dividerTool",
 
   "importTool",
   "downloadTool",
 
-  "dividerTool3",
+  "dividerTool",
 
   "undoTool",
   "redoTool",
 
-  "dividerTool4",
+  "dividerTool",
 
   "cutsiteTool",
   "featureTool",
@@ -77,12 +77,12 @@ const eclToolList = [
   "oligoTool",
   "orfTool",
 
-  "dividerTool5",
+  "dividerTool",
 
   "visibilityTool",
   "hotKeysTool",
 
-  "dividerTool6",
+  "dividerTool",
 
   "findTool"
 ];
